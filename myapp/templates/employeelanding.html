@@ -1,0 +1,9 @@
+{% extends 'employee_layout/default.html' %}
+{% block 'content' %}
+<center><h2>WELCOME TO EMPLOYEE PAGE</h2></center>
+<center><h3>MY NAME   : {{request.session.name}}</h3></center>
+<center><h3>MY NAME PHONE NUMBER  : {{request.session.phone}}</h3></center>
+{{message}}
+
+
+{% endblock %}

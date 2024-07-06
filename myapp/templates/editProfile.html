@@ -1,0 +1,67 @@
+{% extends 'admin_layout/default.html' %}
+{% block 'content' %}
+<h2 style="text-align: center;">Edit Profile</h2>
+<form method="post">
+    <input type="hidden" name="UserId" value="{{data.UserId}}">
+    <br>
+    Nmae: <input type="text" name="name" value="{{data.Name}}">
+    <br>
+    Email: <input type="text" name="email" value="{{data.Email}}">
+    <br>
+    Phone: <input type="text" name="phone" value="{{data.Phone}}">
+    <br>
+    Gender: <input type="radio" name="gender" value="male" {% if data.Gender == 'male' %}checked{% endif %} >Male
+            <input type="radio" name="gender" value="female" {% if data.Gender == 'female' %}checked{% endif %}  >Female
+    <br>
+    {% csrf_token %}
+    Role:
+    <select name="role">
+        <option hidden>Choose Your Role</option>
+        <option value="admin" {%  if data.Role == 'admin' %}selected{% endif %}>Admin</option>
+        <option value="hr" {% if data.Role == 'hr' %}selected{% endif %}>HR</option>
+        <option value="employee" {% if data.Role == 'employee' %}selected{% endif %}>Employee</option>
+    </select>
+    <br>
+    <input type="submit" name="btn" value="Update" class="btn btn-primary w-100 py-2">
+</form>
+<style>
+        
+    form {
+        background-color: rgb(245, 207, 207);
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(148, 43, 43, 0.1);
+        width: 480px;
+        height: 480px;
+        margin-left: 700px;
+    }
+    
+    input[type="text"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type="submit"] {
+        background-color: #c92a44;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    input[type="submit"] {
+        
+        border-radius: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #6f5dd4;
+       
+    }
+</style>
+{% endblock %}

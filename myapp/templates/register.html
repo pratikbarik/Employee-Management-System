@@ -1,0 +1,111 @@
+{% extends 'main_layout/default.html' %}
+{% block 'content' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        
+        form {
+            background-color: rgb(245, 207, 207);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(148, 43, 43, 0.1);
+            /* width: 480px;
+            height: 580px;
+            margin-left: 700px; */
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+            background-color: #c92a44;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }   
+        input[type="submit"] {
+            
+            border-radius: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #6f5dd4;
+           
+        }
+        .container {
+            display: flex;
+        }
+        .div1, .div2 {
+            flex: 1; /* This makes both divs take equal space */
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Registration Form</h2>
+    <div class="container">
+        <div class="div2">
+            <img src="https://blogimage.vantagecircle.com/content/images/2021/01/Employee-Management-Meaning-Importance-Tips-Tools---More.png" width="650" height="600">
+        </div>
+        <div class="div1">
+            <form method="post">
+                
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email</label><br>
+                <input type="text" name="email" id="email" required>
+
+                <label for="mobile">Phone</label>
+                <input type="number" id="phone" name="phone" pattern="[0-9]{10}" required>
+                <br><br>
+                {% csrf_token %}
+                <label for="gender">Gender :</label>
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female
+                <br><br>
+
+                <label for="">Select Your Role</label>
+                <select name="role" id="role">
+                    <option value="admin">Admin</option>
+                    <option value="hr">HR</option>
+                    <option value="employee">Employee</option>
+                </select>
+
+                <label for="Password">Create Password</label><br>
+                <input type="password" name="password" style="width: 100%; border-radius: 3px;"><br><br>
+
+                
+                <input type="submit" value="Register" class="btn btn-primary w-100 py-2">
+                <div>
+                    <p>Already Registered  <a href="/login" style="color: #6f5dd4;">Login Here</a></p>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
+
+
+
+{% endblock %}
+
